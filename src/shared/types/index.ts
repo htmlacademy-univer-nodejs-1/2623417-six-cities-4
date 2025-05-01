@@ -6,3 +6,4 @@ export * from './town.type.enum.js';
 export * from './user.type.enum.js';
 export * from './amenities.type.enum.js';
 export * from './mock-server-data.type.js';
+export * from './component.enum.js';
