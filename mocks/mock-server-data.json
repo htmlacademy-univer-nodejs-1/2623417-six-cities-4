@@ -1,0 +1,53 @@
+{
+    "api": {
+      "title": [
+        "Минималистичная квартира с панорамными окнами",
+        "Двухуровневая квартира в стиле лофт",
+        "Студия рядом с парком",
+        "Семейная квартира с детской комнатой",
+        "Апартаменты в бизнес-классе",
+        "Квартира в доме сталинской эпохи"
+      ],
+      "description": [
+        "Квартира с открытой планировкой и большими окнами от пола до потолка, идеальна для молодых профессионалов.",
+        "Просторная квартира в лофтовом стиле с кирпичными стенами, 2 санузла, кухня-гостиная.",
+        "Уютная студия площадью 28 м² рядом с зелёной зоной, отличный вариант для аренды.",
+        "Квартира для семьи: 3 спальни, отдельная кухня, гардеробная и игровая комната.",
+        "Современные апартаменты с охраняемой территорией и подземным паркингом.",
+        "Квартира с высокими потолками и массивными стенами, полная реконструкция здания в 2018 году."
+      ],
+      "houseImages": [
+        "https://images.cdn-cian.ru/images/kvartira-loft-moscow.jpg",
+        "https://images.cdn-cian.ru/images/kvartira-loft2-moscow.jpg",
+        "https://images.cdn-cian.ru/images/kvartira-park-moscow.jpg",
+        "https://images.cdn-cian.ru/images/family-flat.jpg",
+        "https://images.cdn-cian.ru/images/apartments-business.jpg",
+        "https://images.cdn-cian.ru/images/stalinka-flat.jpg"
+      ],
+      "username": [
+        "Игорь Соловьёв",
+        "Анна Чернова",
+        "Никита Орлов",
+        "Светлана Климова",
+        "Олег Михайлов",
+        "Дарья Алексеева"
+      ],
+      "email": [
+        "igor@example.com",
+        "anna@example.com",
+        "nikita@example.com",
+        "svetlana@example.com",
+        "oleg@example.com",
+        "daria@example.com"
+      ],
+      "avatarImage": [
+        "https://avatars.githubusercontent.com/u/100001?v=4",
+        "https://avatars.githubusercontent.com/u/100002?v=4",
+        "https://avatars.githubusercontent.com/u/100003?v=4",
+        "https://avatars.githubusercontent.com/u/100004?v=4",
+        "https://avatars.githubusercontent.com/u/100005?v=4",
+        "https://avatars.githubusercontent.com/u/100006?v=4"
+      ]
+    }
+  }
+  
