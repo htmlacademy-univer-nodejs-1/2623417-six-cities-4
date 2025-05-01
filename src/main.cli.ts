@@ -1,12 +1,14 @@
-#!/usr/bin/env node
-import { CLIApplication, HelpCommand, VersionCommand, ImportCommand } from './cli/index.js';
+#!/usr/bin/env npx tsx
 
-function bootstrap() {
+import {HelpCommand, VersionCommand, ImportCommand, CLIApplication, GenerateCommand} from './cli/index.js';
+
+function bootstrap(){
   const cliApplication = new CLIApplication();
-  cliApplication.registerCommands([
+  cliApplication.registerCommand([
     new HelpCommand(),
     new VersionCommand(),
-    new ImportCommand()
+    new ImportCommand(),
+    new GenerateCommand()
   ]);
 
   cliApplication.processCommand(process.argv);
