@@ -1,5 +1,5 @@
 #!/usr/bin/env npx tsx
-
+import 'reflect-metadata';
 import {HelpCommand, VersionCommand, ImportCommand, CLIApplication, GenerateCommand} from './cli/index.js';
 
 function bootstrap(){
