@@ -1,36 +1,65 @@
-import { Offer, OfferType } from '../types/index.js';
+import { Offer, Town, Amenities, User, ApartmentType, UserType, Coordinates } from '../types/index.js';
 
 export function createOffer(offerData: string): Offer {
+  const fields = offerData.replace('\n', '').split('\t');
+  if (fields.length !== 22) {
+    console.error('Invalid field count', fields.length, fields);
+    throw new Error('Invalid field count');
+  }
   const [
     title,
     description,
-    createdDate,
-    image,
+    postDate,
+    town,
+    previewImage,
+    images,
+    isPremium,
+    isFavorite,
+    rate,
     type,
+    bedrooms,
+    maxAdults,
     price,
-    categories,
-    firstname,
-    lastname,
-    email,
-    avatarPath
+    amenities,
+    hostName,
+    hostEmail,
+    hostPassword,
+    hostType,
+    hostAvatarUrl,
+    comments,
+    latitude,
+    longitude,
   ] = offerData.replace('\n', '').split('\t');
 
   const user = {
-    email,
-    firstname,
-    lastname,
-    avatarPath
-  };
+    name: hostName || '',
+    email: hostEmail || '',
+    avatarUrl: hostAvatarUrl || '',
+    password: hostPassword || '',
+    type: (hostType as UserType) || UserType.Default,
+  } as User;
 
   return {
-    title,
-    description,
-    image,
-    user,
-    postDate: new Date(createdDate),
-    type: OfferType[type as 'Buy' | 'Sell'],
-    price: Number.parseInt(price, 10),
-    categories: categories.split(';')
-      .map((name) => ({name})),
+    title: title || '',
+    description: description || '',
+    postDate: new Date(postDate) || new Date(),
+    town: (town as Town) || Town.Paris,
+    previewImage: previewImage || '',
+    images: images.split(',') || [],
+    isPremium: Boolean(isPremium) || false,
+    isFavorite: Boolean(isFavorite) || false,
+    rate: Number(rate) || 0,
+    type: (type as ApartmentType) || ApartmentType.Apartment,
+    bedrooms: Number(bedrooms) || 0,
+    maxAdults: Number(maxAdults) || 1,
+    price: Number(price) || 0,
+    amenities:
+      amenities.split(',').map((amenity) => amenity as Amenities) || [],
+    host: user,
+    comments: Number(comments) || 0,
+    location: {
+      latitude: Number(latitude) || 0,
+      longitude: Number(longitude) || 0,
+    } as Coordinates,
   };
 }

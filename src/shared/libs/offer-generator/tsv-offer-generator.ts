@@ -1,51 +1,67 @@
 import dayjs from 'dayjs';
-
-import { TownType, Amenities, ApartmentType, MockServerData, UserType } from '../../types/index.js';
-import { generateRandomValue, getRandomItem, getRandomItems } from '../../helpers/index.js';
-
 import { OfferGenerator } from './offer-generator.interface.js';
+import { MockServerData } from '../../types/index.js';
+import {
+  generateRandomValue,
+  getRandomItem,
+  getRandomItems,
+} from '../../helpers/index.js';
 
-const MIN_PRICE = 100;
-const MAX_PRICE = 100_000;
+const MIN_PRICE = 2000;
+const MAX_PRICE = 5000;
 
-const FIRST_WEE_DAY = 1;
-const LAST_WEE_DAY = 7;
+const FIRST_WEEK_DAY = 1;
+const LAST_WEEK_DAY = 7;
 
-export class TsvOfferGenerator implements OfferGenerator {
+export class TSVOfferGenerator implements OfferGenerator {
   constructor(private readonly mockData: MockServerData) {}
 
   public generate(): string {
-    const title = getRandomItem(this.mockData.title);
-    const description = getRandomItem(this.mockData.description);
-    const postDate = dayjs().subtract(generateRandomValue(FIRST_WEE_DAY, LAST_WEE_DAY), 'day').toISOString();
-    const town = getRandomItem(Object.values(TownType));
-    const previewPath = getRandomItem(this.mockData.houseImages);
-    const imagePaths = getRandomItems(this.mockData.houseImages).join(', ');
-    const isPremium = generateRandomValue(0, 1) ? 'true' : 'false';
-    const isFavorites = generateRandomValue(0, 1) ? 'true' : 'false';
-    const rating = generateRandomValue(1, 5);
-    const apartmentType = getRandomItem(Object.values(ApartmentType));
-    const roomsCount = generateRandomValue(1, 8);
-    const guestCount = generateRandomValue(1, 8);
-    const rentalCost = generateRandomValue(MIN_PRICE, MAX_PRICE);
-    const amenities = getRandomItem(Object.values(Amenities));
-    const commentsCount = 0;
-    const coordinates = [
-      generateRandomValue(0, 10, 3),
-      generateRandomValue(0, 10, 3)
-    ].join('; ');
-    const username = getRandomItem(this.mockData.username);
-    const email = getRandomItem(this.mockData.email);
-    const avatarPath = getRandomItem(this.mockData.avatarImage);
-    const userType = getRandomItem(Object.keys(UserType));
+    const title = getRandomItem<string>(this.mockData.titles);
+    const description = getRandomItem<string>(this.mockData.descriptions);
+    const postDate = dayjs()
+      .subtract(generateRandomValue(FIRST_WEEK_DAY, LAST_WEEK_DAY), 'day')
+      .toISOString();
+    const city = getRandomItem(this.mockData.towns);
+    const previewImage = getRandomItem<string>(this.mockData.previewImages);
+    const images = getRandomItems<string>(this.mockData.images).join(',');
+    const isPremium = generateRandomValue(0, 1) === 1;
+    const isFavorite = generateRandomValue(0, 1) === 1;
+    const rate = generateRandomValue(0, 5);
+    const type = getRandomItem<string>(this.mockData.types);
+    const bedrooms = generateRandomValue(1, 7);
+    const maxAdults = generateRandomValue(1, 10);
+    const price = generateRandomValue(MIN_PRICE, MAX_PRICE);
+    const amenities = getRandomItems<string>(this.mockData.amenities).join(',');
+    const host = getRandomItem<string>(this.mockData.users);
+    const [name, email, avatarUrl, password, typeUser] = host.split(', ');
+    const comments = generateRandomValue(0, 100);
+    const location = getRandomItem<string>(this.mockData.locations);
+    const [latitude, longitude] = location.split(' ');
 
     return [
-      title, description, postDate, town,
-      previewPath, imagePaths, isPremium, isFavorites,
-      rating, apartmentType , roomsCount, guestCount,
-      rentalCost, amenities,
-      username, email, avatarPath, userType,
-      commentsCount, coordinates
+      title,
+      description,
+      postDate,
+      city,
+      previewImage,
+      images,
+      isPremium,
+      isFavorite,
+      rate,
+      type,
+      bedrooms,
+      maxAdults,
+      price,
+      amenities,
+      name,
+      email,
+      avatarUrl,
+      password,
+      typeUser,
+      comments,
+      latitude,
+      longitude,
     ].join('\t');
   }
 }

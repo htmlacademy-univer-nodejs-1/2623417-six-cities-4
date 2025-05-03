@@ -1,14 +1,20 @@
-#!/usr/bin/env npx tsx
+#!/usr/bin/env node
 import 'reflect-metadata';
-import {HelpCommand, VersionCommand, ImportCommand, CLIApplication, GenerateCommand} from './cli/index.js';
+import {
+  CLIApplication,
+  HelpCommand,
+  ImportCommand,
+  VersionCommand,
+  GenerateCommand,
+} from './cli/index.js';
 
-function bootstrap(){
+function bootstrap() {
   const cliApplication = new CLIApplication();
-  cliApplication.registerCommand([
+  cliApplication.registerCommands([
     new HelpCommand(),
     new VersionCommand(),
     new ImportCommand(),
-    new GenerateCommand()
+    new GenerateCommand(),
   ]);
 
   cliApplication.processCommand(process.argv);
