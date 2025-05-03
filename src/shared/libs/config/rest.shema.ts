@@ -11,24 +11,24 @@ export type RestSchema = {
   DB_PASSWORD: string;
   DB_PORT: string;
   DB_NAME: string;
-}
+};
 
 export const configRestSchema = convict<RestSchema>({
   PORT: {
     doc: 'Port for incoming connections',
     format: 'port',
     env: 'PORT',
-    default: 4000
+    default: 4000,
   },
   SALT: {
     doc: 'Salt for password hash',
     format: String,
     env: 'SALT',
-    default: null
+    default: null,
   },
   DB_HOST: {
     doc: 'IP address of the database server (MongoDB)',
-    format: String, // Изменено с 'ipaddress' на 'String'
+    format: String,
     env: 'DB_HOST',
     default: '127.0.0.1'
   },
@@ -54,6 +54,6 @@ export const configRestSchema = convict<RestSchema>({
     doc: 'Database name (MongoDB)',
     format: String,
     env: 'DB_NAME',
-    default: 'buy-and-sell'
+    default: 'six-cities'
   },
 });

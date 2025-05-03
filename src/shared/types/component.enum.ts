@@ -3,10 +3,11 @@ export const Component = {
   Logger: Symbol.for('Logger'),
   Config: Symbol.for('Config'),
   DatabaseClient: Symbol.for('DatabaseClient'),
-  UserModel: Symbol.for('UserModel'),
   UserService: Symbol.for('UserService'),
-  CategoryService: Symbol.for('CategoryService'),
-  CategoryModel: Symbol.for('CategoryModel'),
+  UserModel: Symbol.for('UserModel'),
   OfferService: Symbol.for('OfferService'),
   OfferModel: Symbol.for('OfferModel'),
+  CommentService: Symbol.for('CommentService'),
+  CommentModel: Symbol.for('CommentModel'),
+  FavoriteModel: Symbol.for('FavoriteModel')
 } as const;
