@@ -22,7 +22,7 @@ export class TSVOfferGenerator implements OfferGenerator {
     const postDate = dayjs()
       .subtract(generateRandomValue(FIRST_WEEK_DAY, LAST_WEEK_DAY), 'day')
       .toISOString();
-    const city = getRandomItem(this.mockData.cities);
+    const town = getRandomItem(this.mockData.cities);
     const previewImage = getRandomItem<string>(this.mockData.previewImages);
     const images = getRandomItems<string>(this.mockData.images).join(',');
     const isPremium = generateRandomValue(0, 1) === 1;
@@ -43,7 +43,7 @@ export class TSVOfferGenerator implements OfferGenerator {
       title,
       description,
       postDate,
-      city,
+      town,
       previewImage,
       images,
       isPremium,

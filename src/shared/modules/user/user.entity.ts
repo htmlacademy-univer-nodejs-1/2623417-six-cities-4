@@ -7,15 +7,12 @@ import {
 import { User, UserType } from '../../types/index.js';
 import { createSHA256 } from '../../helpers/index.js';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export interface UserEntity extends defaultClasses.Base {}
-
 @modelOptions({
   schemaOptions: {
     collection: 'users',
   },
 })
-// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+
 export class UserEntity extends defaultClasses.TimeStamps implements User {
   @prop({ type: String, unique: true, required: true })
   public email: string;

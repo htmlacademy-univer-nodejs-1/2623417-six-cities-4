@@ -19,7 +19,7 @@ export interface OfferService {
   incCommentCount(offerId: string): Promise<DocumentType<OfferEntity> | null>;
   exists(documentId: string): Promise<boolean>;
   findPremiumOffersByCity(
-    city: Town,
+    town: Town,
     userId?: string
   ): Promise<DocumentType<OfferEntity>[]>;
   getUserFavorites(userId: string): Promise<DocumentType<OfferEntity>[]>;
