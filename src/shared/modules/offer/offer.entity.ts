@@ -10,8 +10,6 @@ import { Town } from '../../types/town.enum.js';
 import { AppartmentType } from '../../types/appartment-type.enum.js';
 import { Amenities } from '../../types/amenities.enum.js';
 
-export interface OfferEntity extends defaultClasses.Base {}
-
 @modelOptions({
   schemaOptions: {
     collection: 'offers',
