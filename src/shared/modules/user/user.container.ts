@@ -8,7 +8,7 @@ import { UserController } from './user.controller.js';
 import { Controller } from '../../libs/rest/index.js';
 
 export function createUserContainer(userContainer: Container) {
-  
+
   userContainer
     .bind<UserService>(Component.UserService)
     .to(DefaultUserService)
