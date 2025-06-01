@@ -5,15 +5,16 @@ import { Component } from '../../types/index.js';
 import { CommentEntity, CommentModel } from './comment.entity.js';
 import { DefaultCommentService } from './default-comment.service.js';
 
-export function createCommentContainer(container: Container) {
+export function createCommentContainer(commentContainer: Container) {
 
-  container
+  commentContainer
     .bind<CommentService>(Component.CommentService)
     .to(DefaultCommentService)
     .inSingletonScope();
 
-  container
+  commentContainer
     .bind<types.ModelType<CommentEntity>>(Component.CommentModel)
     .toConstantValue(CommentModel);
 
+  return commentContainer;
 }

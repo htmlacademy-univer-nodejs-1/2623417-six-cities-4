@@ -7,7 +7,7 @@ import {
 } from '@typegoose/typegoose';
 import { UserEntity } from '../user/index.js';
 import { Town } from '../../types/town.enum.js';
-import { ApartmentType } from '../../types/apartment-type.enum.js';
+import { ApartmentType } from '../../types/appartment-type.enum.js';
 import { Amenities } from '../../types/amenities.enum.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
@@ -39,7 +39,7 @@ export class OfferEntity extends defaultClasses.TimeStamps {
     type: String,
     enum: Town,
   })
-  public town!: Town;
+  public city!: Town;
 
   @prop({ type: Boolean })
   public isPremium!: boolean;

@@ -15,7 +15,6 @@ import { FavoriteEntity } from '../favorite/index.js';
 import { Town } from '../../types/town.enum.js';
 import { CommentEntity } from '../comment/index.js';
 
-
 @injectable()
 export class DefaultOfferService implements OfferService {
   constructor(
@@ -108,11 +107,11 @@ export class DefaultOfferService implements OfferService {
   }
 
   public async findPremiumOffersByCity(
-    town: Town,
+    city: Town,
     userId?: string
   ): Promise<types.DocumentType<OfferEntity>[]> {
     const offers = await this.offerModel
-      .find({ town, isPremium: true })
+      .find({ city, isPremium: true })
       .limit(DEFAULT_PREMIUM_OFFER_COUNT)
       .sort({ createdAt: DEFAULT_SORT_TYPE })
       .exec();
@@ -156,38 +155,27 @@ export class DefaultOfferService implements OfferService {
     await this.favoriteModel.deleteOne({ userId, offerId });
   }
 
-  public async updateRating(
-    offerId: string
-  ): Promise<types.DocumentType<OfferEntity> | null> {
-    const comments = await this.commentModel.find({ offerId }).exec();
-
-    const ratings = comments.map((comment) => comment.rate);
-    const total = ratings.reduce((acc, cur) => (acc += cur), 0);
-    const avgRating = ratings.length > 0 ? total / ratings.length : 0;
-
-    return this.offerModel
-      .findByIdAndUpdate(offerId, { rate: avgRating }, { new: true })
-      .exec();
-  }
-
-  private async addFavoriteToOffer<
-    T extends { id: string; isFavorite: boolean }
-  >(offers: T[], userId: string | undefined): Promise<T[]> {
+  private async addFavoriteToOffer(
+    offers: DocumentType<OfferEntity>[],
+    userId?: string
+  ): Promise<DocumentType<OfferEntity>[]> {
     if (!userId) {
       return offers.map((offer) => ({
-        ...offer,
+        ...offer.toObject(),
         isFavorite: false,
-      }));
+      })) as DocumentType<OfferEntity>[];
     }
+
     const favorites = await this.favoriteModel
       .find({ userId })
       .lean<{ offerId: string }[]>()
       .exec();
+
     const offerIds = new Set(favorites.map((f) => f.offerId.toString()));
 
     return offers.map((offer) => ({
-      ...offer,
+      ...offer.toObject(),
       isFavorite: offerIds.has(offer.id.toString()),
-    }));
+    })) as DocumentType<OfferEntity>[];
   }
 }
