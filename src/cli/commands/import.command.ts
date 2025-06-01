@@ -5,7 +5,7 @@ import {
   getErrorMessage,
   getMongoURI,
 } from '../../shared/helpers/index.js';
-import { ConsoleLogger } from '../../libs/logger/console.logger.js';
+import { ConsoleLogger } from '../../shared/libs/logger/console.logger.js';
 import {
   DefaultOfferService,
   OfferModel,
@@ -99,7 +99,7 @@ export class ImportCommand implements Command {
   private async saveOffer(offer: Offer) {
     const user = await this.userService.findOrCreate(
       {
-        ...offer.host,
+        ...offer.userId,
         password: DEFAULT_USER_PASSWORD,
       },
       this.salt
@@ -109,17 +109,14 @@ export class ImportCommand implements Command {
       title: offer.title,
       description: offer.description,
       previewImage: offer.previewImage,
-      postDate: offer.postDate,
-      price: offer.price,
       type: offer.type,
       images: offer.images,
       town: offer.town,
       isPremium: offer.isPremium,
-      rate: offer.rate,
       bedrooms: offer.bedrooms,
       maxAdults: offer.maxAdults,
       amenities: offer.amenities,
-      host: user.id,
+      userId: user.id,
     });
   }
 }

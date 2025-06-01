@@ -3,7 +3,7 @@ import {
   Town,
   Amenities,
   User,
-  ApartmentType,
+  AppartmentType,
   UserType,
   Coordinates,
 } from '../types/index.js';
@@ -57,13 +57,13 @@ export function createOffer(offerData: string): Offer {
     isPremium: Boolean(isPremium) || false,
     isFavorite: Boolean(isFavorite) || false,
     rate: Number(rate) || 0,
-    type: (type as ApartmentType) || ApartmentType.Apartment,
+    type: (type as AppartmentType) || AppartmentType.Apartment,
     bedrooms: Number(bedrooms) || 0,
     maxAdults: Number(maxAdults) || 1,
     price: Number(price) || 0,
     amenities:
       amenities.split(',').map((amenity) => amenity as Amenities) || [],
-    host: user,
+    userId: user,
     comments: Number(comments) || 0,
     location: {
       latitude: Number(latitude) || 0,

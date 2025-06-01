@@ -1,4 +1,4 @@
-import { Amenities, Town, ApartmentType } from '../../../types/index.js';
+import { Amenities, Town, AppartmentType } from '../../../types/index.js';
 
 export class OfferResponseDto {
   id!: string;
@@ -10,7 +10,7 @@ export class OfferResponseDto {
   town!: Town;
   isPremium!: boolean;
   rate!: number;
-  type!: ApartmentType;
+  type!: AppartmentType;
   bedrooms!: number;
   maxAdults!: number;
   price!: number;
