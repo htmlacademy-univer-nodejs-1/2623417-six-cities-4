@@ -1,5 +1,5 @@
 import { User } from './user.type.js';
-import { ApartmentType } from './apartment-type.enum.js';
+import { ApartmentType } from './appartment-type.enum.js';
 import { Amenities } from './amenities.enum.js';
 import { Town } from './town.enum.js';
 import { Coordinates } from './coordinates.type.js';

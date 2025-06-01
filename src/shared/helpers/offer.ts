@@ -1,4 +1,12 @@
-import { Offer, Town, Amenities, User, ApartmentType, UserType, Coordinates } from '../types/index.js';
+import {
+  Offer,
+  Town,
+  Amenities,
+  User,
+  ApartmentType,
+  UserType,
+  Coordinates,
+} from '../types/index.js';
 
 export function createOffer(offerData: string): Offer {
   const fields = offerData.replace('\n', '').split('\t');
@@ -36,7 +44,7 @@ export function createOffer(offerData: string): Offer {
     email: hostEmail || '',
     avatarUrl: hostAvatarUrl || '',
     password: hostPassword || '',
-    type: (hostType as UserType) || UserType.Default,
+    type: (hostType as UserType) || UserType.Regular,
   } as User;
 
   return {

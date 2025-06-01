@@ -1,6 +1,6 @@
 import { Amenities } from '../../../types/amenities.enum.js';
 import { Town } from '../../../types/town.enum.js';
-import { ApartmentType } from '../../../types/apartment-type.enum.js';
+import { ApartmentType } from '../../../types/appartment-type.enum.js';
 
 
 export class CreateOfferDto {
