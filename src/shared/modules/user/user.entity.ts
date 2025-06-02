@@ -7,6 +7,7 @@ import {
 import { User, UserType } from '../../types/index.js';
 import { createSHA256 } from '../../helpers/index.js';
 
+
 @modelOptions({
   schemaOptions: {
     collection: 'users',
@@ -17,7 +18,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
   @prop({ type: String, unique: true, required: true })
   public email: string;
 
-  @prop({ type: String, required: false, default: '' })
+  @prop({ type: String, required: false, default: 'photo.jpg' })
   public avatarUrl: string;
 
   @prop({ type: String, required: true, default: '' })
