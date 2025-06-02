@@ -24,7 +24,6 @@ import { Logger } from '../../shared/libs/logger/index.js';
 import { Offer } from '../../shared/types/index.js';
 import { DEFAULT_DB_PORT, DEFAULT_USER_PASSWORD } from './command.constant.js';
 import { FavoriteModel } from '../../shared/modules/favorite/index.js';
-import { CommentModel } from '../../shared/modules/comment/index.js';
 
 export class ImportCommand implements Command {
   private userService: UserService;
@@ -41,8 +40,7 @@ export class ImportCommand implements Command {
     this.offerService = new DefaultOfferService(
       this.logger,
       OfferModel,
-      FavoriteModel,
-      CommentModel
+      FavoriteModel
     );
     this.userService = new DefaultUserService(this.logger, UserModel);
     this.databaseClient = new MongoDatabaseClient(this.logger);
@@ -109,6 +107,7 @@ export class ImportCommand implements Command {
       title: offer.title,
       description: offer.description,
       previewImage: offer.previewImage,
+      price: offer.price,
       type: offer.type,
       images: offer.images,
       town: offer.town,

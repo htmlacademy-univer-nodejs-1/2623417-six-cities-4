@@ -60,6 +60,12 @@ export class CreateOfferDto {
   public bedrooms: number;
 
   @IsNotEmpty()
+  @IsInt({ message: CreateOfferValidationMessage.price.invalidFormat })
+  @Min(100, { message: CreateOfferValidationMessage.price.min })
+  @Max(100000, { message: CreateOfferValidationMessage.price.max })
+  public price: number;
+
+  @IsNotEmpty()
   @IsInt({ message: CreateOfferValidationMessage.maxAdults.invalidFormat })
   @Min(1, { message: CreateOfferValidationMessage.maxAdults.minValue })
   @Max(10, { message: CreateOfferValidationMessage.maxAdults.maxValue })
