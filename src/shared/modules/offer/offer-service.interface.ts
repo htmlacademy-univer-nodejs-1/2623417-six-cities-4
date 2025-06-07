@@ -19,7 +19,7 @@ export interface OfferService extends DocumentExists {
   ): Promise<DocumentType<OfferEntity> | null>;
   incCommentCount(offerId: string): Promise<DocumentType<OfferEntity> | null>;
   exists(documentId: string): Promise<boolean>;
-  findPremiumOffersByCity(
+  findPremiumOffersByTown(
     town: Town,
     userId?: string
   ): Promise<DocumentType<OfferEntity>[]>;

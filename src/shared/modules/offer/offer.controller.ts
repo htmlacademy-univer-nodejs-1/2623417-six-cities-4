@@ -75,7 +75,7 @@ export class OfferController extends BaseController {
       ],
     });
     this.addRoute({
-      path: '/:city/premium',
+      path: '/:town/premium',
       method: HttpMethod.Get,
       handler: this.getPremium,
     });
@@ -117,11 +117,18 @@ export class OfferController extends BaseController {
   }
 
   public async index(
-    { query }: Request<RequestQuery>,
+    { query, tokenPayload }: Request<RequestQuery>,
     res: Response
   ): Promise<void> {
-    const limit = parseInt(query.limit as string, 10);
-    const offers = await this.offerService.find(limit);
+    const rawLimit = query.limit as string;
+    const parsedLimit = parseInt(rawLimit, 10);
+
+    const limit =
+      Number.isFinite(parsedLimit) && parsedLimit > 0
+        ? parsedLimit
+        : undefined;
+
+    const offers = await this.offerService.find(limit, tokenPayload?.id);
     const responseData = fillDTO(OfferRdo, offers);
     this.ok(res, responseData);
   }
@@ -140,10 +147,12 @@ export class OfferController extends BaseController {
 
   async show({ params, tokenPayload }: Request<ParamOfferId>, res: Response) {
     const { offerId } = params;
-    const offer = await this.offerService.findById(offerId, tokenPayload.id);
+    const userId = tokenPayload?.id;
+    const offer = await this.offerService.findById(offerId, userId);
 
     this.ok(res, fillDTO(OfferRdo, offer));
   }
+
 
   async update(
     { body, params }: Request<ParamOfferId, unknown, UpdateOfferDto>,
@@ -174,16 +183,20 @@ export class OfferController extends BaseController {
     { params, tokenPayload }: Request<ParamTown>,
     res: Response
   ) {
-    const city = params.town as Town;
-    if (!Object.values(Town).includes(city)) {
-      return this.send(res, 500, city);
+    const town = params.town as Town;
+
+    if (!Object.values(Town).includes(town)) {
+      return this.send(res, 500, town);
     }
-    const offers = await this.offerService.findPremiumOffersByCity(
-      city,
-      tokenPayload.id
+
+    const offers = await this.offerService.findPremiumOffersByTown(
+      town,
+      tokenPayload?.id
     );
+
     this.ok(res, fillDTO(OfferRdo, offers));
   }
+
 
   public async getComments(
     { params }: Request<ParamOfferId>,
