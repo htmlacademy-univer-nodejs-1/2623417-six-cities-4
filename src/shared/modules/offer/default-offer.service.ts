@@ -106,7 +106,7 @@ export class DefaultOfferService implements OfferService {
       .exec();
   }
 
-  public async findPremiumOffersByCity(
+  public async findPremiumOffersByTown(
     town: Town,
     userId?: string
   ): Promise<types.DocumentType<OfferEntity>[]> {

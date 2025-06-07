@@ -6,12 +6,8 @@ Content-Type: application/json
 ###
 
 # Получить объявление по идентификатору
-GET http://localhost:5001/offers/680f83b7b6123430ae0cd85b HTTP/1.1
-
-###
-
-## Получить список объявлений
-GET http://localhost:5001/offers HTTP/1.1
+GET http://localhost:5001/offers/68440beabe6db3ea36d4d747 HTTP/1.1
+Accept: application/json
 
 ###
 
@@ -19,19 +15,20 @@ GET http://localhost:5001/offers HTTP/1.1
 
 POST http://localhost:5001/offers HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4OTA5MSwiZXhwIjoxNzQ5NDYxODkxfQ.dxZonBWslgCyE5isHclvkBcioU0CO4exAkLlA5l5v9Y
 
 {
-  "title": "Очень большой дом",
-  "description": "Красивый дом на берегу моря.",
-  "price": 1408,
-  "city": "Paris",
-  "previewImage": "image.png",
-  "images": ["1", "2", "3", "4", "5", "6"],
+  "title": "Современный лофт с видом на Эйфелеву башню",
+  "description": "Просторный светлый лофт в центре Парижа, идеален для романтического отпуска.",
+  "price": 2500,
+  "town": "Paris",
+  "previewImage": "eiffel-loft.jpg",
+  "images": ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"],
   "isPremium": true,
-  "type": "house",
-  "bedrooms": 2,
-  "maxAdults": 4,
-  "amenities": ["Towels", "Breakfast"],
+  "type": "apartment",
+  "bedrooms": 1,
+  "maxAdults": 2,
+  "amenities": ["Breakfast", "Air conditioning", "Washer", "Towels", "Fridge"],
   "userId": "67f4f3ae4d7b90c77bd3c3ed"
 }
 
@@ -39,19 +36,21 @@ Content-Type: application/json
 
 ## Удалить объявление по идентификатору
 
-DELETE http://localhost:5001/offers/68152cd92b8796b5921451f1 HTTP/1.1
+DELETE http://localhost:5001/offers/68440beabe6db3ea36d4d747 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4OTA5MSwiZXhwIjoxNzQ5NDYxODkxfQ.dxZonBWslgCyE5isHclvkBcioU0CO4exAkLlA5l5v9Y
 
 ###
 
 ## Обновить объявление
 
-PATCH http://localhost:5001/offers/680f83b7b6123430ae0cd85b HTTP/1.1
+PATCH http://localhost:5001/offers/68440c9f288f0449dcd8644c HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4OTA5MSwiZXhwIjoxNzQ5NDYxODkxfQ.dxZonBWslgCyE5isHclvkBcioU0CO4exAkLlA5l5v9Y
 
 {
-  "title": "Просторная квартира в центре города",
-  "price": 1100,
-  "amenities" : ["Air conditioning", "Baby seat"]
+  "title": "Просторная квартира рядом с центром города",
+  "price": 1950,
+  "amenities": ["Air conditioning", "Baby seat", "Dishwasher"]
 }
 
 ###
@@ -59,10 +58,12 @@ Content-Type: application/json
 ## Список объявлений из определенного города
 
 GET http://localhost:5001/offers/Paris/premium HTTP/1.1
+Accept: application/json
 
 ###
 
 ## Список комментариев к объявлению
-GET http://localhost:5001/offers/680f83b7b6123430ae0cd85b/comments HTTP/1.1
+GET http://localhost:5001/offers/68440c9f288f0449dcd8644c/comments HTTP/1.1
+Accept: application/json
 
 ###
