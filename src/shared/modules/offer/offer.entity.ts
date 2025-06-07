@@ -44,7 +44,7 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   @prop({ type: Boolean })
   public isFavorite!: boolean;
 
-  @prop({ type: Number })
+  @prop({ type: Number, default: 1, min: 1, max: 5 })
   public rate!: number;
 
   @prop({
@@ -64,6 +64,15 @@ export class OfferEntity extends defaultClasses.TimeStamps {
 
   @prop({ type: () => [String], enum: Amenities })
   public amenities!: Amenities[];
+
+  @prop({ type: Number, required: true, min: -90, max: 90 })
+  public latitude!: number;
+
+  @prop({ type: Number, required: true, min: -180, max: 180 })
+  public longitude!: number;
+
+  @prop({ type: Number, required: true, default: 0 })
+  public commentCount!: number;
 
   @prop({
     ref: () => UserEntity,

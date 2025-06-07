@@ -1,7 +1,5 @@
 export * from './amenities.enum.js';
-export * from './town-coordinates.type.js';
 export * from './town.enum.js';
-export * from './coordinates.type.js';
 export * from './appartment-type.enum.js';
 export * from './offer.type.js';
 export * from './user-type.enum.js';

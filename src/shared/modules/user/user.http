@@ -5,7 +5,7 @@ POST http://localhost:5001/users/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "wendy@example.com",
+  "email": "wendy1234@example.com",
   "avatarPath": "wendy.jpg",
   "firstname": "Wendy",
   "lastname": "Torrance",
@@ -23,7 +23,7 @@ POST http://localhost:5001/users/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "wendy@example.com",
+  "email": "wendy1234@example.com",
   "password": "Redrum2025!"
 }
 
@@ -33,7 +33,7 @@ Content-Type: application/json
 @file = C:/Users/Public/photo.jpg
 
 POST http://localhost:5001/users/6844046b531f936e584b6e2b/avatar HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4ODMzMSwiZXhwIjoxNzQ5NDYxMTMxfQ.RrjUcKoxuO48XQcDoFXV1Z0WzXhuLpa0E0BXtdRoo9s
+Authorization: Bearer <token>
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -47,6 +47,6 @@ Content-Type: image/jpeg
 
 ## Проверить токен пользователя
 GET http://localhost:5001/users/login HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4ODMzMSwiZXhwIjoxNzQ5NDYxMTMxfQ.RrjUcKoxuO48XQcDoFXV1Z0WzXhuLpa0E0BXtdRoo9s
+Authorization: Bearer <token>
 
 ###

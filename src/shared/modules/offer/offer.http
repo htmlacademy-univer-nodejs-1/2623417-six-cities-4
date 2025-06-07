@@ -6,8 +6,8 @@ Content-Type: application/json
 ###
 
 # Получить объявление по идентификатору
-GET http://localhost:5001/offers/68440beabe6db3ea36d4d747 HTTP/1.1
-Accept: application/json
+GET http://localhost:5001/offers/68440c9f288f0449dcd8644c HTTP/1.1
+Authorization: Bearer <token>
 
 ###
 
@@ -15,7 +15,7 @@ Accept: application/json
 
 POST http://localhost:5001/offers HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4OTA5MSwiZXhwIjoxNzQ5NDYxODkxfQ.dxZonBWslgCyE5isHclvkBcioU0CO4exAkLlA5l5v9Y
+Authorization: Bearer <token>
 
 {
   "title": "Современный лофт с видом на Эйфелеву башню",
@@ -29,23 +29,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tI
   "bedrooms": 1,
   "maxAdults": 2,
   "amenities": ["Breakfast", "Air conditioning", "Washer", "Towels", "Fridge"],
-  "userId": "67f4f3ae4d7b90c77bd3c3ed"
+  "userId": "67f4f3ae4d7b90c77bd3c3ed",
+  "longitude": 5.5,
+  "latitude": 45
 }
 
 ###
 
 ## Удалить объявление по идентификатору
 
-DELETE http://localhost:5001/offers/68440beabe6db3ea36d4d747 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4OTA5MSwiZXhwIjoxNzQ5NDYxODkxfQ.dxZonBWslgCyE5isHclvkBcioU0CO4exAkLlA5l5v9Y
-
+DELETE http://localhost:5001/offers/68440c9f288f0449dcd8644c HTTP/1.1
+Authorization: Bearer <token>
 ###
 
 ## Обновить объявление
 
 PATCH http://localhost:5001/offers/68440c9f288f0449dcd8644c HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4OTA5MSwiZXhwIjoxNzQ5NDYxODkxfQ.dxZonBWslgCyE5isHclvkBcioU0CO4exAkLlA5l5v9Y
+Authorization: Bearer <token>
 
 {
   "title": "Просторная квартира рядом с центром города",
@@ -63,7 +64,29 @@ Accept: application/json
 ###
 
 ## Список комментариев к объявлению
-GET http://localhost:5001/offers/68440c9f288f0449dcd8644c/comments HTTP/1.1
+GET http://localhost:5001/offers/6844399e57bbd51fd9a4ace5/comments HTTP/1.1
 Accept: application/json
 
 ###
+
+## Добавить объявление в избранное
+
+POST http://localhost:5001/offers/68440c9f288f0449dcd8644c/favorite HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <token>
+
+###
+
+## Удалить объявление из избранного
+
+DELETE http://localhost:5001/offers/68440c9f288f0449dcd8644c/favorite HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <token>
+
+###
+
+## Получить избранные объявления пользователя
+
+GET http://localhost:5001/offers/favorites HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer <token>
