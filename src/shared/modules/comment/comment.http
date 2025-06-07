@@ -1,16 +1,14 @@
 # Комментарии
 ## Создать комментарий
 
-POST http://localhost:5001/comments HTTP/1.1
+POST http://localhost:5001/comments/6844399e57bbd51fd9a4ace5
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IndlbmR5QGV4YW1wbGUuY29tIiwibmFtZSI6IldlbmR5VCIsInR5cGUiOiJwcm8iLCJpZCI6IjY4NDQwNTdkNTMxZjkzNmU1ODRiNmUzMyIsImlhdCI6MTc0OTI4OTA5MSwiZXhwIjoxNzQ5NDYxODkxfQ.dxZonBWslgCyE5isHclvkBcioU0CO4exAkLlA5l5v9Y
+Authorization: Bearer <token>
 
 {
-  "text": "Всё было отлично",
-  "rate": 5,
-  "offerId": "68440c9f288f0449dcd8644c"
+  "text": "Всё было прекрасно",
+  "rate": 5
 }
-
 
 ###
 

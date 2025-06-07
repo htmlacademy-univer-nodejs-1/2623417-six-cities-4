@@ -2,7 +2,6 @@ import { User } from './user.type.js';
 import { AppartmentType } from './appartment-type.enum.js';
 import { Amenities } from './amenities.enum.js';
 import { Town } from './town.enum.js';
-import { Coordinates } from './coordinates.type.js';
 
 export type Offer = {
   title: string;
@@ -21,5 +20,6 @@ export type Offer = {
   amenities: Amenities[];
   userId: User;
   comments: number;
-  location: Coordinates;
+  latitude: number;
+  longitude: number;
 };
